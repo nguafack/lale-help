@@ -43,7 +43,9 @@ class Tasks::SourcingWidgetCell < ::ViewModel
         decline: circle_task_decline_path(circle, task),
         accept: circle_task_volunteer_path(circle, task),
         invite_wg: circle_task_invite_path(circle, task, type: 'working_group'),
+        invite_sms_wg: circle_task_invitesms_path(circle, task, type: 'working_group'),
         invite_circle: circle_task_invite_path(circle, task, type: 'circle'),
+        invite_sms_circle: circle_task_invitesms_path(circle, task, type: 'circle'),
         assign_volunteer: circle_task_assign_volunteer_path(circle, task)
       )
     end

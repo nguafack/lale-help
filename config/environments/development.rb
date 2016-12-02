@@ -40,6 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.delivery_method = :test # ENV['IsDockerContainer'] ? :letter_opener_web : :letter_opener
+  config.action_mailer.default_url_options = {:host => "localhost:5000"}
   config.mandrill_templates = ENV.fetch("MANDRILL_TEMPLATES", "false") == "true"
 
   # see application.rb for feature_toggle documentation

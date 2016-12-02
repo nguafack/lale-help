@@ -190,6 +190,19 @@ class Circle::TasksController < ApplicationController
     end
   end
 
+  def invitesms
+    authorize! :manage, current_task
+    outcome = Task::Notifications::InvitationSMS.run(current_user: current_user, task: current_task, type: params[:type], only_path: true)
+
+    if outcome.success?
+      set_flash(:success, count: outcome.result.volunteers.size)
+      head :ok
+    else
+      set_flash(:error)
+      head :unprocessable_entity
+    end
+  end
+
   def clone
     authorize! :clone, current_task
 

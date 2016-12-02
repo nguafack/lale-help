@@ -425,6 +425,7 @@
           :invite_working_group: All helpers in the working group (%{count})
           :title_assign: Assign to helper
           :title_invite: Invite by email
+          :title_invite_sms: Invite by SMS
           :title_main: Find helpers
         :no_volunteers_yet: No one signed up yet.
         :title: Helpers
@@ -993,6 +994,12 @@
           :one: Invited %{count} member.
           :other: Invited %{count} members.
           :zero: There aren't any members to invite.
+      :invitesms:
+        :alert: Unable to invite members. Please try again later.
+        :notice:
+          :one: Invited %{count} member.
+          :other: Invited %{count} members.
+          :zero: There aren't any members to invite.    
       :update:
         :notice: "%{resource_name} was successfully updated."
     :created: "%{name} was successfully created."
@@ -1405,6 +1412,12 @@
           :one: Invited %{count} member.
           :other: Invited %{count} members.
           :zero: There aren't any members to invite.
+      :invitesms:
+        :error: Unable to invite members. Please try again later.
+        :success:
+          :one: Invited %{count} member.
+          :other: Invited %{count} members.
+          :zero: There aren't any members to invite.    
       :reopen:
         :error: There was a problem re-opening this task
         :success: Task has been re-opened.

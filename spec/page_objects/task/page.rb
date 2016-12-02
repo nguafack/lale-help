@@ -22,6 +22,12 @@ module PageObject
         element :invite_circle, 'label[for=invite_circle]'
         element :submit_button, '.button-secondary'
       end
+
+      section :invite_users_sms_form, '.invite-sms-helpers' do
+        element :invite_working_group, 'label[for=invite_working_group]'
+        element :invite_circle, 'label[for=invite_circle]'
+        element :submit_button, '.button-secondary'
+      end
       
       element :task_badge, '.users-box .task-badge'
 

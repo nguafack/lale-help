@@ -32,6 +32,13 @@ updateInviteButtonState = ->
   disabled = parseInt($(this).data('invitees-count')) == 0
   button.attr('disabled', disabled)
 
+  # button should not be clickable when no one would be invited
+updateInviteSmsButtonState = ->
+  button   = $(this).closest('.invite-sms-helpers').find('button')
+  disabled = parseInt($(this).data('invitees-count')) == 0
+  button.attr('disabled', disabled)
+
+
 closeModalAndReloadPage = ->
   $(sourcingOptionsModalSelector).remodal().close()
   Turbolinks.visit(location.href)
@@ -63,6 +70,15 @@ inviteHelpers = (event)->
     method:  container.data('method'),
     success: closeModalAndReloadPage
 
+inviteSmsHelpers = (event)->
+  event.preventDefault();
+  container = $(this).closest('.invite-sms-helpers')
+  radioButton = container.find('input[type=radio]:checked')
+  $.ajax
+    url:     radioButton.data('url'),
+    method:  container.data('method'),
+    success: closeModalAndReloadPage
+
 sourcingOptionsModalSelector = "[data-remodal-id=find-helpers]"
 
 # listening on document so we don't need to init everything on DOM ready
@@ -72,6 +88,8 @@ $(document)
   .on('click', '.assign-helpers .button', assignVolunteer)
   .on('change', '#new_volunteer_ids', updateAssignButtonState)
   .on('change', '.invite-helpers input[type=radio]', updateInviteButtonState)
-  .on('click', '.invite-helpers .button', inviteHelpers)    
+  .on('change', '.invite-sms-helpers input[type=radio]', updateInviteSmsButtonState)
+  .on('click', '.invite-helpers .button', inviteHelpers)  
+  .on('click', '.invite-sms-helpers .button', inviteSmsHelpers)    
   .on('click', '.users-box .unassign-user-icon', unassignVolunteer)    
   

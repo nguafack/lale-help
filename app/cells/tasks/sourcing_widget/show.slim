@@ -61,3 +61,17 @@
         br
         button.button.button-secondary data-disable-on-click=true
           = t('helpers.invite_user')
+
+    - if can?(:invite_to, task)
+      .invite-sms-helpers data-method="post"
+        h3 = t('.modal.title_invite_sms')
+        = radio_button_tag('invite-sms', 'working_group', true, 'data': {url: links.invite_sms_wg, 'invitees-count': working_group_invitees_count})
+        = label_tag('invite_working_group', t('.modal.invite_working_group', count: working_group_invitees_count))
+        
+        br
+
+        = radio_button_tag('invite', 'circle', false, disabled: task.working_group.is_private?, data: {url: links.invite_sms_circle, 'invitees-count': circle_invitees_count})
+        = label_tag('invite_circle', t('.modal.invite_all', count: circle_invitees_count))
+        br
+        button.button.button-secondary data-disable-on-click=true
+          = t('helpers.invite_user')
