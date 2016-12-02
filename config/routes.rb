@@ -39,6 +39,8 @@ Rails.application.routes.draw do
         collection do
           get :volunteer
           get :organizer
+          get :task_calendar, :defaults => { :format => :ics }
+          get :supply_calendar, :defaults => { :format => :ics }
         end
       end
 
