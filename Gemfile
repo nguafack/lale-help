@@ -16,6 +16,7 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'migration_data'
 gem 'carmen'
 gem 'validate_url'
+gem 'icalendar'
 
 gem 'fog-aws', require: 'fog/aws'
 gem 'fog-local', require: 'fog/local'
@@ -55,6 +56,7 @@ group :development do
   gem "letter_opener_web"
   gem 'thor', require: false
   gem 'web-console', '~> 2.0'
+  gem 'rb-readline'
 end
 
 group :development, :test do
