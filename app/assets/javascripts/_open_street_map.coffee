@@ -53,6 +53,7 @@ window.CirclesMap = class CirclesMap
         target: @target[0]
         view: new ol.View
           zoom: 14
+
   #to be continued and debug later
   _calculateZoomLevel: (widthInPixels, ratio, lat) =>
     length = 100 * 1000; # in meters

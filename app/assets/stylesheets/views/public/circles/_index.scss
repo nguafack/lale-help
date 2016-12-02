@@ -97,6 +97,12 @@ body.public {
       }
 
     }
+
+    &:hover {
+      .description {
+        @include display(flex);
+      }
+    }
   }
 
   .circle-marker.open {
