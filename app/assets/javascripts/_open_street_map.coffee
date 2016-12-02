@@ -39,6 +39,8 @@ window.CirclesMap = class CirclesMap
 
     else
       @_add_markers(data.circles)
+      ext = @_get_bounding_extent_for_circles(data.circles)
+      @map.getView().fit(ext, @map.getSize())
       @select_circle(circles[0])
 
 
@@ -51,6 +53,14 @@ window.CirclesMap = class CirclesMap
         target: @target[0]
         view: new ol.View
           zoom: 14
+  #to be continued and debug later
+  _calculateZoomLevel: (widthInPixels, ratio, lat) =>
+    length = 100 * 1000; # in meters
+    widthInPixels = 0; # set to screen width
+    k = widthInPixels * 156543.03392 * Math.cos(lat * Math.PI / 180);
+    zoomLevel = Math.round( Math.log( ( ratio * k)/(length * 100) ) / Math.LN2);
+
+    return zoomLevel - 1
 
   _recenter: (center)=>
     # console.log("recenter")
@@ -105,6 +115,14 @@ window.CirclesMap = class CirclesMap
       @overlays.push marker
       @get_map().addOverlay(marker);
 
+  _get_bounding_extent_for_circles: (circles) =>
+    coordinates =[]
+    for circle in circles
+      coordinates.push([circle.location.longitude, circle.location.latitude])
+    ext = ol.extent.boundingExtent(coordinates)
+    ext = ol.proj.transformExtent( ext, ol.proj.get('EPSG:4326'), ol.proj.get('EPSG:3857') )
+
+    return ext
 
   _clear_markers: =>
     @overlays ||= []
