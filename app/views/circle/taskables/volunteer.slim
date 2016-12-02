@@ -3,5 +3,9 @@
 = render partial: 'circle/tasks/list', locals: { list_id: 'my-tasks-list', circle: current_circle, working_group: nil, tasks: @tasks, title: t('.tasks-header') }
 = link_to "Export Task Calendar", task_calendar_circle_taskables_path(current_circle), class: 'button button-primary'
 
+br
+br
+br
+br
 = render partial: 'circle/supplies/list', locals: { list_id: 'my-supplies-list', circle: current_circle, working_group: nil, supplies: @supplies, title: t('.supplies-header')}
 = link_to "Export Supply Calendar", supply_calendar_circle_taskables_path(current_circle), class: 'button button-primary'

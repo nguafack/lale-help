@@ -57,7 +57,7 @@ Rails.application.routes.draw do
         put   :volunteer, :assign_volunteer, :unassign_volunteer, :decline, :complete, :reopen, :clone
         patch :volunteer, :assign_volunteer, :unassign_volunteer, :decline, :complete, :reopen, :clone
 
-        post :invite
+        post :invite, :invitesms
       end
 
       resources :projects do
